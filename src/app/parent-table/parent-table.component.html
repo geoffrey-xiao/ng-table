@@ -1,0 +1,17 @@
+<p>parent-table works!</p>
+<app-common-table>
+    <!-- <ng-template template="header" let-columns>
+        <tr>
+            <th *ngFor="let column of columns">{{column.title}}</th>
+        </tr>
+    </ng-template> -->
+    <ng-template template="name" let-row="row" let-column="column">
+        <!-- <a style="color:red"> {{row[column.column]}}</a> -->
+        <app-test-link [title]="row[column.column]">{{row[column.column]}}</app-test-link>
+    </ng-template>
+
+    <ng-template template="age" let-row="row" let-column="column">
+        <a style="color:red"> {{row['age']}}</a>
+        <!-- <app-test-link [title]="row[column.column]">{{row[column.column]}}</app-test-link> -->
+    </ng-template>
+</app-common-table>
