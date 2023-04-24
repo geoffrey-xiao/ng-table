@@ -1,9 +1,9 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[template]',
+  selector: '[templateName]',
 })
 export class TemplateHeaderDirective {
-  @Input('template') templateName: any;
+  @Input() templateName: any;
   constructor(public template: TemplateRef<any>) {}
 }
