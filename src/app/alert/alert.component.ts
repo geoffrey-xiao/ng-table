@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { TitleStrategy } from '@angular/router';
-import { delay, of } from 'rxjs';
+import { delay, of, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-alert',
@@ -25,7 +25,7 @@ export class AlertComponent implements OnInit {
 
   public _close: any = false;
 
-  public hidden = false;
+  public timeoutSupscription: Subscription;
 
   @Input() get close() {
     return this._close;
@@ -34,6 +34,10 @@ export class AlertComponent implements OnInit {
   set close(value) {
     this._close = value;
     this.closed.emit();
+    if (this.timeoutSupscription) {
+      this.timeoutSupscription.unsubscribe();
+      this.timeoutSupscription = undefined;
+    }
   }
 
   constructor(public zone: NgZone) {}
@@ -41,13 +45,11 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
     if (this.timeout) {
       this.zone.runOutsideAngular(() => {
-        of(true)
+        this.timeoutSupscription = of(true)
           .pipe(delay(this.timeout))
           .subscribe(() => {
-            console.log('lll');
             this.zone.run(() => {
               this.close = true;
-              this.hidden = true;
             });
           });
       });

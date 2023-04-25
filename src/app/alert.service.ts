@@ -18,7 +18,7 @@ export class AlertService {
     public application: ApplicationRef
   ) {}
 
-  create(alertType = 'danger', message = 'test', timeout = 50000) {
+  create(alertType = 'danger', message = 'test', timeout = 5000) {
     const alertRef =
       this.compoentFactory.resolveComponentFactory(AlertComponent);
     const alert = alertRef.create(this.injector);
