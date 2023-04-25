@@ -1,0 +1,10 @@
+<clr-modal [(clrModalOpen)]="open">
+    <h3 class="modal-title">Confirm</h3>
+    <div class="modal-body">
+        <p>{{message}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="confirm(false)">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirm(true)">Ok</button>
+    </div>
+</clr-modal>

@@ -1,0 +1,10 @@
+<clr-modal [(clrModalOpen)]="open">
+    <h3 class="modal-title">Error</h3>
+    <div class="modal-body error-container">
+        <cds-icon shape="exclamation-triangle" size="xxxl"></cds-icon>
+        <p style="color:red">{{message}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="confirm(false)">Dismiss</button>
+    </div>
+</clr-modal>
